@@ -1,10 +1,6 @@
 const { User } = require("../models")
 
-module.exports = async function allUsers(req, res) {
-	if (Object.keys(req.body).length === 0 && req.body.constructor === Object) {
-		return res.json(await User.find())
-	}
-	
+module.exports = async function deleteUser(req, res) {
 	const newUser = new User({
 		name: req.body.name,
 		email: req.body.email,

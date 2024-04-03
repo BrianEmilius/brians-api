@@ -1,9 +1,11 @@
 const router = require("express").Router()
-const { allMovies, allUsers, singleMovie, singleUser } = require("./controllers")
+const { createUser, readAllUsers, readSingleUser, updateUser, deleteUser } = require("./controllers")
+const { createMovie, readAllMovies, readSingleMovie, updateMovie, deleteMovie } = require("./controllers")
 
-router.post("/api/movies/:id", singleMovie)
-router.post("/api/movies", allMovies)
-router.post("/api/users/:id", singleUser)
-router.post("/api/users", allUsers)
+router.route("/api/movies").post(createMovie).get(readAllMovies)
+router.route("/api/movies/:id").get(readSingleMovie).patch(updateMovie).delete(deleteMovie)
+
+router.route("/api/users").post(createUser).get(readAllUsers)
+router.route("/api/users/:id").get(readSingleUser).patch(updateUser).delete(deleteUser)
 
 module.exports = router

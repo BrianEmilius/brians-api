@@ -1,10 +1,6 @@
 const { Movie } = require("../models")
 
-module.exports = async function allMovies(req, res) {
-	if (Object.keys(req.body).length === 0 && req.body.constructor === Object) {
-		return res.json(await Movie.find())
-	}
-	
+module.exports = async function createMovie(req, res) {
 	const newMovie = new Movie({
 		title: req.body.title,
 		fullplot: req.body.fullplot,
